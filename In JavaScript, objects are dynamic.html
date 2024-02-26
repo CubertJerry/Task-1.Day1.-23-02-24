@@ -1,0 +1,38 @@
+In JavaScript, objects are dynamic collections of key-value pairs, where keys are strings (or symbols) and values can be of any data type, including other objects, functions, arrays, and primitive values. Objects are instances of classes, or more commonly, prototypes, in JavaScript's prototypal inheritance model.
+
+// Example of a JavaScript object
+const person = {
+  name: 'John Doe',
+  age: 30,
+  email: 'john@example.com',
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+};
+
+
+Internal Representation of Objects
+Behind the scenes, JavaScript engines use various data structures to represent objects efficiently. While the specifics may vary between different engines, here are some common aspects of how objects are internally represented:
+
+Property Descriptors: Each property of an object is associated with a property descriptor, which defines attributes such as value, writable, enumerable, and configurable. This information is stored alongside the object's data.
+
+Hidden Classes (V8 Engine): Engines like Google's V8 use hidden classes (also known as shape or map transitions) to optimize property access and memory usage. Objects with the same structure share a hidden class, allowing for efficient property lookup and storage.
+
+Property Maps (SpiderMonkey Engine): Other engines, such as Mozilla's SpiderMonkey, use property maps to represent objects. Property maps store information about an object's properties and their offsets within memory, enabling fast property access.
+
+Prototype Chain and Inheritance
+In JavaScript, objects can inherit properties and methods from other objects through prototype chains. When accessing a property or method on an object, the JavaScript engine traverses the prototype chain, starting from the object itself and proceeding up through its prototype(s) until it finds the desired property or method.
+
+// Example demonstrating prototype chain
+const person = {
+  name: 'John Doe',
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+};
+
+const student = Object.create(person);
+student.major = 'Computer Science';
+
+student.greet(); // Output: Hello, my name is John Doe.
+
